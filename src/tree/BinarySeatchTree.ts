@@ -265,4 +265,59 @@ export class BinarySearchTree {
 
         return validate(this.root, null, null);
     }
+
+    public delete(requestId: number): boolean {
+        const deleteNode = (
+            node: TreeNode | null,
+            id: number,
+        ): TreeNode | null => {
+            if (node === null) {
+                return null;
+            }
+
+            if (id < node.request.id) {
+                node.left = deleteNode(node.left, id);
+                return node;
+            }
+
+            if (id > node.request.id) {
+                node.right = deleteNode(node.right, id);
+                return node;
+            }
+
+            if (node.left === null && node.right === null) {
+                return null;
+            }
+
+            if (node.left === null) {
+                return node.right;
+            }
+
+            if (node.right === null) {
+                return node.left;
+            }
+
+            let successor = node.right;
+
+            while (successor.left !== null) {
+                successor = successor.left;
+            }
+
+            node.request = successor.request;
+
+            node.right = deleteNode(node.right, successor.request.id);
+
+            return node;
+        };
+
+        const oldCount = this.countNodes();
+
+        this.root = deleteNode(this.root, requestId);
+
+        return this.countNodes() < oldCount;
+    }
+
+    public getRoot(): TreeNode | null {
+        return this.root;
+    }
 }
