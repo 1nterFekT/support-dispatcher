@@ -1,4 +1,4 @@
-import type { Request } from "../models/Request.js";
+import type { Request } from "../models/Request.ts";
 
 export function formatRequest(request: Request): string {
     return `${request.id}(${request.priority})`;

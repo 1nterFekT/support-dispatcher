@@ -1,5 +1,5 @@
-import type { Request } from "../models/Request.js";
-import { TreeNode } from "./TreeNode.js";
+import type { Request } from "../models/Request.ts";
+import { TreeNode } from "./TreeNode.ts";
 
 export type SearchResult = {
     request: Request | null;

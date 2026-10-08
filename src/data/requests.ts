@@ -1,4 +1,4 @@
-import type { Request } from "../models/Request.js";
+import type { Request } from "../models/Request.ts";
 
 export const requests: Request[] = [
     {

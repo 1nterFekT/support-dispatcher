@@ -1,4 +1,4 @@
-import type { Request } from "../models/Request.js";
+import type { Request } from "../models/Request.ts";
 
 function isGreater(a: Request, b: Request): boolean {
     if (a.priority !== b.priority) {

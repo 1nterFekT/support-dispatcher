@@ -3,9 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "dev": "tsc src/main.ts",
-        "build": "tsc",
-        "start": "node dist/main.js"
+        "dev": "node src/main.ts"
     },
     "keywords": [],
     "author": "",
