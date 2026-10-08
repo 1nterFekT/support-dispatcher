@@ -39,4 +39,86 @@ export class BinarySearchTree {
             }
         }
     }
+
+    public preOrder(): Request[] {
+        const result: Request[] = [];
+
+        const traverse = (node: TreeNode | null): void => {
+            if (node === null) {
+                return;
+            }
+
+            result.push(node.request);
+            traverse(node.left);
+            traverse(node.right);
+        };
+
+        traverse(this.root);
+
+        return result;
+    }
+
+    public inOrder(): Request[] {
+        const result: Request[] = [];
+
+        const traverse = (node: TreeNode | null): void => {
+            if (node === null) {
+                return;
+            }
+
+            traverse(node.left);
+            result.push(node.request);
+            traverse(node.right);
+        };
+
+        traverse(this.root);
+
+        return result;
+    }
+
+    public postOrder(): Request[] {
+        const result: Request[] = [];
+
+        const traverse = (node: TreeNode | null): void => {
+            if (node === null) {
+                return;
+            }
+
+            traverse(node.left);
+            traverse(node.right);
+            result.push(node.request);
+        };
+
+        traverse(this.root);
+
+        return result;
+    }
+
+    public levelOrder(): Request[] {
+        const result: Request[] = [];
+
+        if (this.root === null) {
+            return result;
+        }
+
+        const queue: TreeNode[] = [this.root];
+        let index = 0;
+
+        while (index < queue.length) {
+            const node = queue[index];
+            index++;
+
+            result.push(node!.request);
+
+            if (node!.left !== null) {
+                queue.push(node!.left);
+            }
+
+            if (node!.right !== null) {
+                queue.push(node!.right);
+            }
+        }
+
+        return result;
+    }
 }
